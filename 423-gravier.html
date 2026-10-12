@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>423 Gravier, Unit B3 — New Orleans Monthly Loft Rental</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1E211F;
+    --paper:#F7F3EA;
+    --paper-2:#EFE8D8;
+    --brick:#7C3F31;
+    --brick-dark:#5E2F25;
+    --brass:#A88A3E;
+    --slate:#47524C;
+    --white:#FFFFFF;
+    --line: rgba(30,33,31,0.14);
+    --radius: 3px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.001ms !important; transition-duration:0.001ms !important;}
+  }
+
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Work Sans', sans-serif;
+    font-size:16px;
+    line-height:1.6;
+  }
+
+  h1,h2,h3{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    margin:0;
+    color:var(--ink);
+  }
+
+  a{color:inherit;}
+  img{max-width:100%; display:block;}
+
+  :focus-visible{
+    outline:2px solid var(--brick);
+    outline-offset:3px;
+  }
+
+  .wrap{
+    max-width:1120px;
+    margin:0 auto;
+    padding:0 28px;
+  }
+
+  /* ---------- NAV ---------- */
+  .site-nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(247,243,234,0.94);
+    backdrop-filter: blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  .site-nav .wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    padding-top:16px; padding-bottom:16px;
+  }
+  .brand{
+    font-family:'Fraunces', serif;
+    font-size:1.15rem;
+    letter-spacing:0.01em;
+  }
+  .brand span{color:var(--brick);}
+  .nav-links{
+    display:flex; gap:28px; list-style:none; margin:0; padding:0;
+    font-size:0.92rem;
+  }
+  .nav-links a{text-decoration:none; color:var(--slate); border-bottom:1px solid transparent; padding-bottom:2px;}
+  .nav-links a:hover{border-bottom-color:var(--brick); color:var(--ink);}
+  .nav-cta{
+    background:var(--brick); color:var(--white); text-decoration:none;
+    padding:9px 18px; border-radius:var(--radius); font-size:0.9rem;
+  }
+  .nav-cta:hover{background:var(--brick-dark);}
+  .nav-toggle{display:none;}
+
+  @media (max-width:760px){
+    .nav-links{display:none;}
+    .nav-cta{padding:8px 14px; font-size:0.85rem;}
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    height:88vh;
+    min-height:520px;
+    overflow:hidden;
+  }
+  .hero img{
+    width:100%; height:100%; object-fit:cover;
+    position:absolute; inset:0;
+  }
+  .hero::after{
+    content:"";
+    position:absolute; inset:0;
+    background:linear-gradient(180deg, rgba(30,33,31,0.05) 0%, rgba(20,22,20,0.15) 55%, rgba(15,16,15,0.72) 100%);
+  }
+  .hero-content{
+    position:absolute; left:0; right:0; bottom:0;
+    padding:52px 28px 44px;
+    color:var(--white);
+    max-width:1120px;
+    margin:0 auto;
+  }
+  .hero-kicker{
+    font-size:0.88rem;
+    letter-spacing:0.03em;
+    color:#E7DBC6;
+    margin-bottom:10px;
+  }
+  .hero h1{
+    font-size:clamp(2rem, 4.4vw, 3.4rem);
+    color:var(--white);
+    max-width:820px;
+    line-height:1.12;
+  }
+  .hero-address{
+    margin-top:16px;
+    font-size:1rem;
+    color:#EDE5D4;
+  }
+
+  /* ---------- SECTION BASICS ---------- */
+  section{padding:88px 0;}
+  .section-heading{
+    display:flex; justify-content:space-between; align-items:baseline;
+    gap:24px; margin-bottom:40px;
+    border-bottom:1px solid var(--line);
+    padding-bottom:20px;
+  }
+  .section-heading h2{font-size:clamp(1.6rem,2.6vw,2.1rem);}
+  .section-heading .tag{color:var(--brass); font-size:0.92rem; white-space:nowrap;}
+
+  /* ---------- ABOUT / SPACE ---------- */
+  .about-grid{
+    display:grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap:64px;
+    align-items:start;
+  }
+  .about-copy p{max-width:60ch; color:var(--slate); font-size:1.02rem;}
+  .stat-list{
+    display:grid;
+    grid-template-columns: repeat(2,1fr);
+    gap:26px 20px;
+    margin-top:8px;
+  }
+  .stat-list div{border-top:1px solid var(--line); padding-top:12px;}
+  .stat-list .num{font-family:'Fraunces',serif; font-size:1.7rem; display:block;}
+  .stat-list .label{font-size:0.88rem; color:var(--slate);}
+
+  .sleeps-box{
+    background:var(--white);
+    border:1px solid var(--line);
+    padding:28px;
+    border-radius:var(--radius);
+  }
+  .sleeps-box h3{font-size:1.15rem; margin-bottom:16px;}
+  .sleeps-row{
+    display:flex; justify-content:space-between;
+    padding:12px 0; border-top:1px solid var(--line);
+    font-size:0.95rem;
+  }
+  .sleeps-row:first-of-type{border-top:none;}
+  .sleeps-row span:last-child{color:var(--slate);}
+
+  @media (max-width:820px){
+    .about-grid{grid-template-columns:1fr; gap:36px;}
+  }
+
+  /* ---------- GALLERY ---------- */
+  .gallery-grid{
+    display:grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-auto-rows: 130px;
+    gap:10px;
+  }
+  .gallery-grid figure{margin:0; overflow:hidden; border-radius:var(--radius);}
+  .gallery-grid img{width:100%; height:100%; object-fit:cover;}
+  .g1{grid-column:1/4; grid-row:1/4;}
+  .g2{grid-column:4/7; grid-row:1/3;}
+  .g3{grid-column:4/6; grid-row:3/5;}
+  .g4{grid-column:6/7; grid-row:3/5;}
+  .g5{grid-column:1/3; grid-row:4/6;}
+  .g6{grid-column:3/5; grid-row:5/7;}
+  .g7{grid-column:1/3; grid-row:6/8;}
+  .g8{grid-column:5/7; grid-row:5/8;}
+  .g9{grid-column:3/5; grid-row:7/9;}
+
+  @media (max-width:820px){
+    .gallery-grid{grid-template-columns: repeat(2,1fr); grid-auto-rows:180px;}
+    .gallery-grid figure{grid-column:auto !important; grid-row:auto !important;}
+  }
+
+  /* ---------- NEIGHBORHOOD ---------- */
+  .neighborhood{
+    background:var(--ink);
+    color:#E9E3D3;
+  }
+  .neighborhood .section-heading{border-bottom-color:rgba(233,227,211,0.16);}
+  .neighborhood .section-heading .tag{color:var(--brass);}
+  .neigh-grid{
+    display:grid;
+    grid-template-columns: 0.95fr 1.05fr;
+    gap:56px;
+    align-items:center;
+  }
+  .neigh-copy p{color:#C9C2AE; max-width:56ch;}
+  .walk-list{list-style:none; margin:26px 0 0; padding:0;}
+  .walk-list li{
+    display:flex; justify-content:space-between;
+    padding:13px 0; border-top:1px solid rgba(233,227,211,0.14);
+    font-size:0.95rem;
+  }
+  .walk-list li:first-child{border-top:none;}
+  .walk-list .dist{color:var(--brass); font-family:'Fraunces',serif;}
+
+  .walk-diagram{
+    background:rgba(233,227,211,0.04);
+    border:1px solid rgba(233,227,211,0.16);
+    border-radius:var(--radius);
+    padding:28px;
+  }
+  .walk-diagram svg{width:100%; height:auto;}
+
+  @media (max-width:820px){
+    .neigh-grid{grid-template-columns:1fr; gap:40px;}
+  }
+
+  /* ---------- AMENITIES ---------- */
+  .amenity-columns{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap:0;
+    border-top:1px solid var(--line);
+  }
+  .amenity-group{
+    padding:26px 26px 26px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .amenity-group:nth-child(3n){padding-right:0;}
+  .amenity-group h3{font-size:1.02rem; margin-bottom:14px; color:var(--brick);}
+  .amenity-group ul{list-style:none; margin:0; padding:0; font-size:0.94rem; color:var(--slate);}
+  .amenity-group li{padding:5px 0;}
+
+  @media (max-width:760px){
+    .amenity-columns{grid-template-columns:1fr;}
+    .amenity-group{padding-right:0;}
+  }
+
+  /* ---------- AVAILABILITY / CALENDAR ---------- */
+  .avail-wrap{
+    display:grid;
+    grid-template-columns: 1fr 1.05fr;
+    gap:56px;
+    align-items:start;
+  }
+  .terms-box{
+    border:1px solid var(--line);
+    background:var(--white);
+    padding:26px;
+    border-radius:var(--radius);
+  }
+  .terms-box .row{
+    display:flex; justify-content:space-between;
+    padding:11px 0; border-top:1px solid var(--line);
+    font-size:0.94rem;
+  }
+  .terms-box .row:first-child{border-top:none;}
+  .terms-box .row span:last-child{font-family:'Fraunces',serif; font-size:1.05rem;}
+  .terms-note{margin-top:18px; font-size:0.88rem; color:var(--slate);}
+
+  .calendar-card{
+    background:var(--white);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:24px;
+  }
+  .cal-header{
+    display:flex; justify-content:space-between; align-items:center;
+    margin-bottom:14px;
+  }
+  .cal-header button{
+    background:none; border:1px solid var(--line); border-radius:var(--radius);
+    width:32px; height:32px; cursor:pointer; font-size:1rem; color:var(--ink);
+  }
+  .cal-header button:hover{border-color:var(--brick); color:var(--brick);}
+  .cal-title{font-family:'Fraunces',serif; font-size:1.15rem;}
+  .cal-grid{
+    display:grid; grid-template-columns:repeat(7,1fr);
+    gap:4px; text-align:center;
+  }
+  .cal-grid .wd{font-size:0.72rem; color:var(--slate); padding-bottom:6px;}
+  .cal-day{
+    aspect-ratio:1; display:flex; align-items:center; justify-content:center;
+    border-radius:50%; font-size:0.86rem; cursor:pointer; color:var(--ink);
+    border:1px solid transparent;
+  }
+  .cal-day.empty{cursor:default;}
+  .cal-day.past{color:#C7C1AE; cursor:not-allowed;}
+  .cal-day:not(.empty):not(.past):hover{border-color:var(--brick);}
+  .cal-day.selected{background:var(--brick); color:var(--white);}
+  .cal-day.in-range{background:var(--paper-2); color:var(--brick-dark);}
+  .cal-legend{
+    margin-top:16px; font-size:0.85rem; color:var(--slate);
+    display:flex; gap:16px; flex-wrap:wrap;
+  }
+  .cal-legend span{display:inline-flex; align-items:center; gap:6px;}
+  .swatch{width:10px; height:10px; border-radius:50%; display:inline-block;}
+  .swatch.sel{background:var(--brick);}
+  .swatch.range{background:var(--paper-2); border:1px solid var(--line);}
+
+  .cal-summary{
+    margin-top:18px; padding-top:16px; border-top:1px solid var(--line);
+    font-size:0.94rem;
+  }
+  .cal-summary strong{font-family:'Fraunces',serif; font-weight:500;}
+
+  @media (max-width:820px){
+    .avail-wrap{grid-template-columns:1fr;}
+  }
+
+  /* ---------- INQUIRY FORM ---------- */
+  .inquiry{
+    background:var(--brick);
+    color:var(--white);
+  }
+  .inquiry .section-heading{border-bottom-color:rgba(255,255,255,0.22);}
+  .inquiry .section-heading .tag{color:#E9C98F;}
+  .inquiry-grid{
+    display:grid; grid-template-columns:0.85fr 1.15fr; gap:56px;
+  }
+  .inquiry-copy p{color:#EADFCF; max-width:44ch;}
+  .steps{list-style:none; margin:26px 0 0; padding:0;}
+  .steps li{
+    display:flex; gap:14px; padding:12px 0;
+    border-top:1px solid rgba(255,255,255,0.18);
+    font-size:0.94rem; color:#EADFCF;
+  }
+  .steps li:first-child{border-top:none;}
+  .steps .idx{font-family:'Fraunces',serif; color:#E9C98F;}
+
+  form.inquiry-form{
+    background:var(--paper);
+    color:var(--ink);
+    padding:32px;
+    border-radius:var(--radius);
+  }
+  .field-row{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
+  .field{margin-bottom:16px;}
+  .field label{display:block; font-size:0.85rem; margin-bottom:6px; color:var(--slate);}
+  .field input, .field select, .field textarea{
+    width:100%; padding:11px 12px; border:1px solid var(--line);
+    border-radius:var(--radius); font-family:'Work Sans',sans-serif;
+    font-size:0.95rem; background:var(--white); color:var(--ink);
+  }
+  .field textarea{min-height:96px; resize:vertical;}
+  .submit-btn{
+    background:var(--ink); color:var(--white); border:none;
+    padding:13px 26px; border-radius:var(--radius); font-size:0.96rem;
+    cursor:pointer; margin-top:6px;
+  }
+  .submit-btn:hover{background:#000;}
+  .form-note{font-size:0.82rem; color:var(--slate); margin-top:12px;}
+
+  @media (max-width:820px){
+    .inquiry-grid{grid-template-columns:1fr; gap:36px;}
+    .field-row{grid-template-columns:1fr;}
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    background:var(--ink); color:#C9C2AE;
+    padding:44px 0 32px;
+    font-size:0.9rem;
+  }
+  .footer-grid{
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:20px;
+    border-bottom:1px solid rgba(233,227,211,0.14);
+    padding-bottom:26px; margin-bottom:20px;
+  }
+  .footer-grid a{text-decoration:none;}
+  .footer-grid a:hover{color:var(--brass);}
+  .footer-bottom{display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; font-size:0.8rem; color:#8C8672;}
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="wrap">
+    <div class="brand">423 Gravier <span>&middot; B3</span></div>
+    <ul class="nav-links">
+      <li><a href="#space">The space</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#neighborhood">Neighborhood</a></li>
+      <li><a href="#amenities">Amenities</a></li>
+      <li><a href="#availability">Availability</a></li>
+    </ul>
+    <a class="nav-cta" href="#inquiry">Send inquiry</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <img src="https://www.furnishedfinder.com/_pdp_/1037358/1/1037358_1_69246651-full.jpeg" alt="Living area of the loft at 423 Gravier St, Unit B3">
+  <div class="hero-content">
+    <div class="hero-kicker">Furnished monthly rental &middot; Central Business District</div>
+    <h1>A renovated warehouse loft, five minutes on foot from the French Quarter.</h1>
+    <div class="hero-address">423 Gravier St, Unit B3 &middot; New Orleans, LA 70130</div>
+  </div>
+</header>
+
+<section id="space">
+  <div class="wrap about-grid">
+    <div class="about-copy">
+      <div class="section-heading" style="border-bottom:none; padding-bottom:0; margin-bottom:24px;">
+        <h2>The space</h2>
+      </div>
+      <p>Set on the third floor of a boutique warehouse conversion, this fully renovated two-bedroom condo pairs old New Orleans brick and bones with new plumbing, wiring, and finishes. It's built for a traveling professional who wants a real kitchen, a quiet place to work, and a short walk to everything else.</p>
+      <p>The primary bedroom holds a king bed behind its own door. The second bedroom is an open loft with a queen bed, overlooking the living area below — ideal for a partner, colleague, or older child who still wants some separation. A queen sleeper sofa in the living room adds a third sleeping option when needed.</p>
+      <div class="stat-list">
+        <div><span class="num">1,125</span><span class="label">Square feet</span></div>
+        <div><span class="num">2 / 2</span><span class="label">Bedrooms / bathrooms</span></div>
+        <div><span class="num">3rd</span><span class="label">Floor, elevator building</span></div>
+        <div><span class="num">30</span><span class="label">Night minimum stay</span></div>
+      </div>
+    </div>
+    <div class="sleeps-box">
+      <h3>Sleeping arrangements</h3>
+      <div class="sleeps-row"><span>Bedroom 1</span><span>King bed, private room</span></div>
+      <div class="sleeps-row"><span>Bedroom 2</span><span>Open loft, queen bed</span></div>
+      <div class="sleeps-row"><span>Living room</span><span>Queen sleeper sofa</span></div>
+      <div class="sleeps-row"><span>Kitchen</span><span>Full-size fridge, dishwasher, stovetop</span></div>
+      <div class="sleeps-row"><span>Work</span><span>Dedicated laptop workspace</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="gallery">
+  <div class="wrap">
+    <div class="section-heading">
+      <h2>Gallery</h2>
+      <div class="tag">15 photos, fully furnished</div>
+    </div>
+    <div class="gallery-grid">
+      <figure class="g1"><img src="https://www.furnishedfinder.com/_pdp_/1037358/1/1037358_1_69264428-full.jpeg" alt="Living room"></figure>
+      <figure class="g2"><img src="https://www.furnishedfinder.com/_pdp_/1037358/1/1037358_1_69246652-full.jpeg" alt="Kitchen"></figure>
+      <figure class="g3"><img src="https://www.furnishedfinder.com/_pdp_/1037358/1/1037358_1_69318538-full.jpeg" alt="Primary bedroom"></figure>
+      <figure class="g4"><img src="https://www.furnishedfinder.com/_pdp_/1037358/1/1037358_1_69318539-full.jpeg" alt="Bathroom"></figure>
+      <figure class="g5"><img src="https://www.furnishedfinder.com/_pdp_/1037358/1/1037358_1_69264429-full.jpeg" alt="Open loft bedroom"></figure>
+      <figure class="g6"><img src="https://www.furnishedfinder.com/_pdp_/1037358/1/1037358_1_69264430-full.jpeg" alt="Dining area"></figure>
+      <figure class="g7"><img src="https://www.furnishedfinder.com/_pdp_/1037358/1/1037358_1_69246649-full.jpeg" alt="Second bathroom"></figure>
+      <figure class="g8"><img src="https://www.furnishedfinder.com/_pdp_/1037358/1/1037358_1_69264454-full.jpeg" alt="Workspace nook"></figure>
+      <figure class="g9"><img src="https://www.furnishedfinder.com/_pdp_/1037358/1/1037358_1_69264457-full.jpeg" alt="Building exterior"></figure>
+    </div>
+  </div>
+</section>
+
+<section id="neighborhood" class="neighborhood">
+  <div class="wrap">
+    <div class="section-heading">
+      <h2>Neighborhood</h2>
+      <div class="tag">Central Business District</div>
+    </div>
+    <div class="neigh-grid">
+      <div class="neigh-copy">
+        <p>Gravier Street sits at the quiet edge of the CBD, close enough to walk to dinner in the French Quarter but far enough to sleep through the night. The St. Charles streetcar line is nearby for anyone commuting toward Uptown, and the building is a short drive from the city's main medical and legal corridors — one reason it's found by traveling nurses, physicians, and attorneys on assignment.</p>
+        <ul class="walk-list">
+          <li><span>French Quarter</span><span class="dist">5 min walk</span></li>
+          <li><span>St. Charles streetcar line</span><span class="dist">2 min walk</span></li>
+          <li><span>Tulane Medical Center</span><span class="dist">0.67 mi</span></li>
+          <li><span>University Medical Center New Orleans</span><span class="dist">1.11 mi</span></li>
+          <li><span>St. Charles Surgical Hospital</span><span class="dist">1.09 mi</span></li>
+        </ul>
+      </div>
+      <div class="walk-diagram">
+        <svg viewBox="0 0 420 320" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="120" cy="180" r="8" fill="#A88A3E"/>
+          <text x="140" y="185" fill="#E9E3D3" font-family="Work Sans" font-size="13">423 Gravier St</text>
+          <path d="M120 180 C 180 120, 240 90, 300 70" stroke="#A88A3E" stroke-width="1.5" fill="none" stroke-dasharray="4 5"/>
+          <circle cx="300" cy="70" r="8" fill="#7C3F31"/>
+          <text x="200" y="45" fill="#E9E3D3" font-family="Fraunces" font-size="16">French Quarter</text>
+          <text x="215" y="110" fill="#C9C2AE" font-family="Work Sans" font-size="12">~0.3 mi / 5 min on foot</text>
+          <path d="M120 180 C 160 220, 210 245, 260 255" stroke="#A88A3E" stroke-width="1.5" fill="none" stroke-dasharray="4 5"/>
+          <circle cx="260" cy="255" r="6" fill="#A88A3E"/>
+          <text x="245" y="285" fill="#C9C2AE" font-family="Work Sans" font-size="12">Streetcar line</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="amenities">
+  <div class="wrap">
+    <div class="section-heading">
+      <h2>Amenities</h2>
+      <div class="tag">Fully furnished, utilities included</div>
+    </div>
+    <div class="amenity-columns">
+      <div class="amenity-group">
+        <h3>Kitchen</h3>
+        <ul>
+          <li>Full-size refrigerator</li>
+          <li>Dishwasher &amp; stovetop</li>
+          <li>Microwave</li>
+          <li>Dining table</li>
+          <li>Starter kitchen essentials</li>
+        </ul>
+      </div>
+      <div class="amenity-group">
+        <h3>Interior &amp; comfort</h3>
+        <ul>
+          <li>Air conditioning</li>
+          <li>Elevator building</li>
+          <li>Room-darkening shades</li>
+          <li>Smart TV</li>
+          <li>In-unit storage &amp; dressers</li>
+        </ul>
+      </div>
+      <div class="amenity-group">
+        <h3>Work &amp; connectivity</h3>
+        <ul>
+          <li>High-speed WiFi</li>
+          <li>Dedicated laptop workspace</li>
+          <li>Quiet building, no smoking</li>
+        </ul>
+      </div>
+      <div class="amenity-group">
+        <h3>Laundry &amp; care</h3>
+        <ul>
+          <li>In-unit washer &amp; dryer</li>
+          <li>Ironing board</li>
+          <li>Hair dryer</li>
+          <li>Starter toiletries</li>
+        </ul>
+      </div>
+      <div class="amenity-group">
+        <h3>Safety</h3>
+        <ul>
+          <li>Smoke detector</li>
+          <li>Fire extinguisher</li>
+          <li>First aid kit</li>
+        </ul>
+      </div>
+      <div class="amenity-group">
+        <h3>Parking &amp; access</h3>
+        <ul>
+          <li>Free parking on premises</li>
+          <li>Stairs and elevator access</li>
+          <li>No pets, please</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="availability">
+  <div class="wrap avail-wrap">
+    <div>
+      <div class="section-heading" style="border-bottom:none; padding-bottom:0; margin-bottom:24px;">
+        <h2>Availability &amp; terms</h2>
+      </div>
+      <div class="terms-box">
+        <div class="row"><span>Minimum stay</span><span>30 nights</span></div>
+        <div class="row"><span>Cleaning fee</span><span>$250</span></div>
+        <div class="row"><span>Refundable deposit</span><span>$3,450</span></div>
+        <div class="row"><span>Application fee</span><span>$44.99</span></div>
+        <div class="row"><span>Utilities</span><span>Included</span></div>
+      </div>
+      <p class="terms-note">Rent is quoted per move-in date and length of stay — send an inquiry below with your dates and we'll confirm current pricing and availability directly.</p>
+    </div>
+
+    <div class="calendar-card">
+      <div class="cal-header">
+        <button type="button" id="prevMonth" aria-label="Previous month">&larr;</button>
+        <div class="cal-title" id="calTitle">Month Year</div>
+        <button type="button" id="nextMonth" aria-label="Next month">&rarr;</button>
+      </div>
+      <div class="cal-grid" id="calGrid"></div>
+      <div class="cal-legend">
+        <span><span class="swatch sel"></span>Move-in date</span>
+        <span><span class="swatch range"></span>30-night stay window</span>
+      </div>
+      <div class="cal-summary" id="calSummary">Select a move-in date to see your earliest checkout date.</div>
+    </div>
+  </div>
+</section>
+
+<section id="inquiry" class="inquiry">
+  <div class="wrap">
+    <div class="section-heading">
+      <h2>Send an inquiry</h2>
+      <div class="tag">No commitment required</div>
+    </div>
+    <div class="inquiry-grid">
+      <div class="inquiry-copy">
+        <p>Tell us your dates and a little about the stay. We reply to every inquiry directly — no automated booking fees, no third-party markup.</p>
+        <ul class="steps">
+          <li><span class="idx">1</span><span>Pick a move-in date on the calendar, or type your own dates below.</span></li>
+          <li><span class="idx">2</span><span>Send your inquiry — it takes under a minute.</span></li>
+          <li><span class="idx">3</span><span>We confirm pricing, availability, and next steps by email.</span></li>
+        </ul>
+      </div>
+
+      <form class="inquiry-form" id="inquiryForm">
+        <div class="field-row">
+          <div class="field">
+            <label for="fName">Full name</label>
+            <input type="text" id="fName" name="name" required>
+          </div>
+          <div class="field">
+            <label for="fEmail">Email</label>
+            <input type="email" id="fEmail" name="email" required>
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="fPhone">Phone</label>
+            <input type="tel" id="fPhone" name="phone">
+          </div>
+          <div class="field">
+            <label for="fLength">Length of stay</label>
+            <select id="fLength" name="length">
+              <option>1 month</option>
+              <option>2 months</option>
+              <option>3+ months</option>
+            </select>
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="fMoveIn">Move-in date</label>
+            <input type="date" id="fMoveIn" name="moveIn">
+          </div>
+          <div class="field">
+            <label for="fMoveOut">Move-out date</label>
+            <input type="date" id="fMoveOut" name="moveOut">
+          </div>
+        </div>
+        <div class="field">
+          <label for="fMessage">Message</label>
+          <textarea id="fMessage" name="message" placeholder="Tell us a bit about your stay — profession, purpose of travel, anything we should know."></textarea>
+        </div>
+        <button type="submit" class="submit-btn">Send inquiry</button>
+        <p class="form-note">Sending this opens your email app with the details filled in, addressed to the property contact. Replace the contact address in the page source with your own before publishing this site.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <strong style="font-family:'Fraunces',serif; font-size:1.1rem; color:#E9E3D3;">423 Gravier St, Unit B3</strong><br>
+        New Orleans, LA 70130
+      </div>
+      <div>
+        <a href="mailto:stay@423gravier.com">stay@423gravier.com</a><br>
+        <a href="#inquiry">Send an inquiry</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 423 Gravier St, Unit B3</span>
+      <span>Furnished monthly rental &middot; New Orleans, LA</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // ---- Calendar ----
+  const calTitle = document.getElementById('calTitle');
+  const calGrid = document.getElementById('calGrid');
+  const calSummary = document.getElementById('calSummary');
+  const prevBtn = document.getElementById('prevMonth');
+  const nextBtn = document.getElementById('nextMonth');
+  const moveInInput = document.getElementById('fMoveIn');
+  const moveOutInput = document.getElementById('fMoveOut');
+
+  const today = new Date();
+  today.setHours(0,0,0,0);
+  let viewYear = today.getFullYear();
+  let viewMonth = today.getMonth();
+  let selectedDate = null;
+
+  const MONTHS = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+  const WEEKDAYS = ["S","M","T","W","T","F","S"];
+
+  function addDays(date, days){
+    const d = new Date(date);
+    d.setDate(d.getDate() + days);
+    return d;
+  }
+
+  function fmt(date){
+    return date.toISOString().slice(0,10);
+  }
+
+  function fmtLong(date){
+    return date.toLocaleDateString('en-US', { month:'long', day:'numeric', year:'numeric' });
+  }
+
+  function renderCalendar(){
+    calTitle.textContent = MONTHS[viewMonth] + " " + viewYear;
+    calGrid.innerHTML = "";
+
+    WEEKDAYS.forEach(w => {
+      const el = document.createElement('div');
+      el.className = 'wd';
+      el.textContent = w;
+      calGrid.appendChild(el);
+    });
+
+    const firstDay = new Date(viewYear, viewMonth, 1);
+    const startOffset = firstDay.getDay();
+    const daysInMonth = new Date(viewYear, viewMonth + 1, 0).getDate();
+
+    const checkoutDate = selectedDate ? addDays(selectedDate, 30) : null;
+
+    for(let i=0; i<startOffset; i++){
+      const empty = document.createElement('div');
+      empty.className = 'cal-day empty';
+      calGrid.appendChild(empty);
+    }
+
+    for(let day=1; day<=daysInMonth; day++){
+      const cellDate = new Date(viewYear, viewMonth, day);
+      const cell = document.createElement('div');
+      cell.className = 'cal-day';
+      cell.textContent = day;
+
+      if(cellDate < today){
+        cell.classList.add('past');
+      } else {
+        cell.addEventListener('click', () => {
+          selectedDate = cellDate;
+          moveInInput.value = fmt(cellDate);
+          moveOutInput.value = fmt(addDays(cellDate, 30));
+          renderCalendar();
+        });
+      }
+
+      if(selectedDate && cellDate.getTime() === selectedDate.getTime()){
+        cell.classList.add('selected');
+      } else if(selectedDate && checkoutDate && cellDate > selectedDate && cellDate < checkoutDate){
+        cell.classList.add('in-range');
+      }
+
+      calGrid.appendChild(cell);
+    }
+
+    if(selectedDate){
+      calSummary.innerHTML = "Move in <strong>" + fmtLong(selectedDate) + "</strong> &mdash; earliest checkout <strong>" + fmtLong(checkoutDate) + "</strong> (30-night minimum).";
+    } else {
+      calSummary.textContent = "Select a move-in date to see your earliest checkout date.";
+    }
+  }
+
+  prevBtn.addEventListener('click', () => {
+    viewMonth--;
+    if(viewMonth < 0){ viewMonth = 11; viewYear--; }
+    renderCalendar();
+  });
+  nextBtn.addEventListener('click', () => {
+    viewMonth++;
+    if(viewMonth > 11){ viewMonth = 0; viewYear++; }
+    renderCalendar();
+  });
+
+  renderCalendar();
+
+  // ---- Inquiry form -> mailto ----
+  document.getElementById('inquiryForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    const name = document.getElementById('fName').value;
+    const email = document.getElementById('fEmail').value;
+    const phone = document.getElementById('fPhone').value;
+    const length = document.getElementById('fLength').value;
+    const moveIn = document.getElementById('fMoveIn').value;
+    const moveOut = document.getElementById('fMoveOut').value;
+    const message = document.getElementById('fMessage').value;
+
+    const bodyLines = [
+      "Name: " + name,
+      "Email: " + email,
+      "Phone: " + phone,
+      "Length of stay: " + length,
+      "Move-in date: " + moveIn,
+      "Move-out date: " + moveOut,
+      "",
+      "Message:",
+      message
+    ];
+
+    const subject = encodeURIComponent("Inquiry — 423 Gravier St, Unit B3");
+    const body = encodeURIComponent(bodyLines.join("\n"));
+    window.location.href = "mailto:stay@423gravier.com?subject=" + subject + "&body=" + body;
+  });
+</script>
+
+</body>
+</html>
